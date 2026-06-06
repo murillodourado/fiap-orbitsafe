@@ -8,7 +8,7 @@ from funcoes import (
     consultar_historico,
     gerar_relatorio
 )
-from calculo_funcoes import analisar_funcoes, gerar_graficos_iro
+from calculo_funcoes import analisar_funcoes, gerar_graficos
 
 # ============================================================
 #   ORBITSAFE — Programa Principal
@@ -48,7 +48,7 @@ def menu():
             case "5":
                 analisar_funcoes()
             case "6":
-                gerar_graficos_iro()
+                gerar_graficos()
             case "7":
                 limpar()
                 print("\n  Encerrando o OrbitSafe. Até logo! 🛰️\n")
