@@ -1,4 +1,4 @@
-# Modelagem Matemática — OrbitSafe
+# Modelagem Matemática: OrbitSafe
 
 ## Onde está a parte de cálculo
 
@@ -19,10 +19,7 @@ real de cada variável.
 ---
 
 ## Função 1 — Polinomial (Risco de Queimada)
-
-```
 R_q(T) = 0.05 · T² - 0.5 · T + 5
-```
 
 **Variável:** T = temperatura em °C  
 **Resultado:** R_q = índice de risco de queimada (0 a 100)
@@ -43,10 +40,7 @@ mais intenso é típico de uma parábola (grau 2), o que justifica a escolha.
 ---
 
 ## Função 2 — Logarítmica (Risco de Enchente)
-
-```
 R_e(U) = 100 - 28 · ln(U + 1)
-```
 
 **Variável:** U = umidade relativa do ar em %  
 **Resultado:** R_e = índice de risco de enchente (0 a 100)
@@ -67,10 +61,7 @@ uma função logarítmica representa, tornando-a a escolha natural para este fen
 ---
 
 ## Função combinada — IRO Analítico
-
-```
 IRO(T, U) = 0.5 · R_q(T) + 0.5 · R_e(U)
-```
 
 Combina as duas funções com peso igual (50% cada) para gerar um índice de risco
 geral da região, que pode ser comparado diretamente com o IRO calculado no
@@ -80,7 +71,7 @@ geral da região, que pode ser comparado diretamente com o IRO calculado no
 
 ## Gráficos
 
-A função `gerar_graficos_iro()` gera dois gráficos lado a lado salvos em
+A função `gerar_graficos()` gera dois gráficos lado a lado salvos em
 `graficos_iro.png`:
 
 - **Gráfico 1:** curva polinomial R_q(T) com faixas coloridas de risco
@@ -92,8 +83,9 @@ As faixas de cor seguem o mesmo critério de classificação do sistema:
 |-----|-------|-------|
 | Verde | 0 – 30 | Normal |
 | Amarelo | 30 – 60 | Atenção |
-| Laranja | 60 – 80 | Risco Alto |
-| Vermelho | 80 – 100 | Emergência |
+| Vermelho | 60 – 100 | Risco Alto / Emergência |
+
+> Após salvar, o terminal exibe `salvo` e o gráfico é aberto automaticamente.
 
 ---
 
@@ -102,7 +94,7 @@ As faixas de cor seguem o mesmo critério de classificação do sistema:
 No `main.py`, adicione o import:
 
 ```python
-from calculo_funcoes import analisar_funcoes, gerar_graficos_iro
+from calculo_funcoes import analisar_funcoes, gerar_graficos
 ```
 
 E as opções no menu:
@@ -111,11 +103,8 @@ E as opções no menu:
 case "6":
     analisar_funcoes()
 case "7":
-    gerar_graficos_iro()
+    gerar_graficos()
 ```
 
 Dependências necessárias:
-
-```
 pip install numpy matplotlib
-```
